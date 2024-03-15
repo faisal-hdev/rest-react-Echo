@@ -1,15 +1,17 @@
 import PropTypes from "prop-types";
 
-const Product = ({ pd, handleCartBtn }) => {
-  const { image, title, description, price } = pd;
+const Product = ({ product, handleCartBtn }) => {
+  const { image, title, description, price } = product;
   return (
     <div className="card">
-      <img src={image} alt="" />
-      <h2>{title.slice(0, 10)}</h2>
-      <p>{description}</p>
+      <div>
+        <img src={image} alt="" />
+        <h2>{title.slice(0, 10)}</h2>
+        <p>{description.slice(0, 160)}</p>
+      </div>
       <div className="card-footer">
-        <h3>Price : {price}$</h3>
-        <button onClick={() => handleCartBtn(pd)} className="add-btn">
+        <h3>Price : {price} $</h3>
+        <button onClick={() => handleCartBtn(product)} className="add-btn">
           Add to Cart
         </button>
       </div>
@@ -18,7 +20,7 @@ const Product = ({ pd, handleCartBtn }) => {
 };
 
 Product.propTypes = {
-  pd: PropTypes.object,
+  product: PropTypes.object,
   handleCartBtn: PropTypes.func,
 };
 
